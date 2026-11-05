@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import tempfile
 import time
-from gtts import gtts
+from gtts import gTTS
 from pydub import AudioSegment
 
 # --- PAGE CONFIGURATION ---
