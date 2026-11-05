@@ -4,7 +4,25 @@ import tempfile
 import time
 from gtts import gTTS
 from pydub import AudioSegment
+from moviepy.editor import AudioFileClip, TextClip, CompositeVideoClip
+import os
 
+def create_simple_video(audio_path, output_video_path="output_video.mp4"):
+    # Kunin ang haba ng nabuong audio
+    audio_clip = AudioFileClip(audio_path)
+    duration = audio_clip.duration
+    
+    # Gumawa ng simpleng background text clip na kasin-haba ng audio
+    txt_clip = TextClip("CineAI Studio Pro - Scene", fontsize=50, color='white', size=(1280, 720))
+    txt_clip = txt_clip.set_duration(duration)
+    
+    # Ilapat ang audio sa video clip
+    video = txt_clip.set_audio(audio_clip)
+    
+    # Isulat at i-render bilang MP4 file
+    video.write_videofile(output_video_path, fps=24, codec='libx264', audio_codec='aac')
+    return output_video_path
+    
 # --- PAGE CONFIGURATION ---
 st.set_page_config(
     page_title="CineAI Studio Pro - Advanced Edition", 
