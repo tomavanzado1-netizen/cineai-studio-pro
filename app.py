@@ -4,8 +4,8 @@ import tempfile
 import time
 from gtts import gTTS
 from pydub import AudioSegment
-from moviepy.editor import AudioFileClip, TextClip, CompositeVideoClip
-import os
+from moviepy import AudioFileClip, TextClip, CompositeVideoClip
+
 
 def create_simple_video(audio_path, output_video_path="output_video.mp4"):
     # Kunin ang haba ng nabuong audio
